@@ -1,0 +1,41 @@
+video {
+  max-width: 100%;
+  max-height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+ 
+.card-content {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+ 
+.bar {
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  transform: translate(0%, -100%);
+  //background-image: url('../../assets/gradient.png');
+}
+ 
+.sticky-video {
+  position: sticky;
+  bottom: 40px;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+ 
+  video {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .7);
+  }
+}
+ 
+.sticky-controls {
+  //background-image: url('../../assets/gradient.png');
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  widows: 100%;
+}

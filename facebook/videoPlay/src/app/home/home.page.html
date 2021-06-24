@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ionic Feed
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content [scrollEvents]="true" (ionScroll)="didScroll()">
+  <div class="ion-padding">
+    <ion-card *ngFor="let item of feed">
+      <ion-card-header>
+        <ion-card-title>{{ item.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ item.text }}
+        <div *ngIf="item.src">
+          <video #player playsinline preload="auto">
+            <source [src]="item.src" type="video/mp4" />
+      </video>
+          <div class="bar">
+            <ion-button (click)="openFullscreen(player)" color="light" fill="clear">
+              <ion-icon slot="icon-only" name="easel"></ion-icon>
+            </ion-button>
+            <ion-button (click)="playOnSide(player)" color="light" fill="clear">
+              <ion-icon slot="icon-only" name="open"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="sticky-video" #stickyplayer [hidden]="!stickyVideo">
+    <div class="sticky-controls" *ngIf="stickyVideo">
+      <ion-row class="ion-no-padding">
+        <ion-col size="4">
+          <ion-button size="small" (click)="closeSticky()" color="light" fill="clear">
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button size="small" (click)="playOrPauseSticky()" color="light" fill="clear">
+            <ion-icon slot="icon-only" [name]="stickyPlaying ? 'pause' : 'play'"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button size="small" (click)="openFullscreen(stickyVideo)" color="light" fill="clear">
+            <ion-icon slot="icon-only" name="easel"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
