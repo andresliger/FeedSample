@@ -42,6 +42,8 @@ export class HomePage {
     return;
     }
 
+    console.log("This is my sample");
+
     // Start autoplay if it's in the view
     if (inView) {
     this.currentPlaying = nativeElement;
